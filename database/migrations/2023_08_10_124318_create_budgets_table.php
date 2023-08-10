@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('budgets', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->string('expense_category');
+            $table->decimal('amount', 10, 2);
+            $table->string('budget_period');
+            $table->date('start_date');
+            $table->date('end_date');
+            // Add other budget-related fields here
             $table->timestamps();
         });
     }

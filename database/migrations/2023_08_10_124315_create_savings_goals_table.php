@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('savings_goals', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->string('goal_name');
+            $table->decimal('target_amount', 10, 2);
+            $table->decimal('current_amount', 10, 2)->default(0);
+            $table->date('deadline');
+            // Add other goal-related fields here
             $table->timestamps();
         });
     }

@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('incomes', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->string('source');
+            $table->decimal('amount', 10, 2);
+            $table->date('date');
+            // Add other income-related fields here
             $table->timestamps();
         });
     }
