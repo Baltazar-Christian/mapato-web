@@ -14,8 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Redirect root URL to the login page
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/dashboard', function () {
