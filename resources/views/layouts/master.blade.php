@@ -37,16 +37,16 @@
     }
 </style>
 
-<body class="bg-light">
+<body class="">
     <!-- Navbar -->
     @include('layouts.navbar')
 
     <!-- login form -->
-    <div class="mx-2 p-2 mt-2 bg-light" style="height:75vh;">
+  
 
         @yield('content')
 
-    </div>
+
 
 
 

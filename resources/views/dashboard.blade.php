@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+<div class="mx-2 p-2 mt-2 bg-light" style="height:75vh;">
 <h4 class="text-navy"><i class="fa fa-user-tie text-danger"></i> Welcome, {{ Auth::user()->name}}
 
 </h4>
@@ -77,4 +78,5 @@
             
 
     </div>
+</div>
 @endsection
