@@ -36,46 +36,15 @@ body {
 </style>
 <body class="bg-light">
     <!-- Navbar -->
-    <nav class="navbar navbar-expand bg-navy navbar-light">
-        <!-- Left navbar links -->
-        <h3 class="text-light"><a href="home.php" class="text-light"><b><i>Mapato <i class="text-danger">.</i></i></b></a></h3>
-
-        <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse order-3 mr-2" id="navbarCollapse">
-        <!-- Left navbar links -->
-        <a href="earnings.php" class="nav-link text-light">Earnings</a>
-        <a href="savings.php" class="nav-link text-light">Savings</a>
-        <a href="expenses.php" class="nav-link text-light">Expenses</a>
-        <a href="debts.php" class="nav-link text-light">Debts</a>
-      
-
-    
-      </div>
-
-      <!-- Right navbar links -->
-      <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
-        <!-- Messages Dropdown Menu -->
-        <li class="nav-item">
-          <a href="profile.php" class="nav-link text-light"><i class="text-success fa fa-cicle"></i>{{ Auth::user()->name}}</a>
-       
-        </li>
-        <li class="nav-item">
-         
-          <a class="nav-link text-light"  href="config/logout.php" role="button">
-            <i class="fas fa-power-off"> Log out</i>
-          </a>
-        </li>
-      </ul>
-    </div>
-
-</nav>    
+<?php include 'include/navbar.php'; ?>
 
 <!-- login form -->
 <div class="mx-2 p-2 mt-2 bg-light" style="height:75vh;">
-<h4 class="text-navy"><i class="fa fa-user-tie text-danger"></i> Welcome, {{ Auth::user()->name}}
+<h4 class="text-navy"><i class="fa fa-user-tie text-danger"></i> Welcome,
+
+<?php
+  echo $_SESSION['fname']." ".$_SESSION['sname'];
+?>
 
 </h4>
 <hr class="bg-light">
@@ -157,16 +126,7 @@ body {
       
 
 <div class="mt-2">
-    <footer class="fixed-bottom bg-navy text-center mt-2 mb-0" style="height:100px;">
-        <br>
-          <strong>Copyright &copy; 2022 <a href="" class="text-danger">TazarChriss</a>.</strong>
-          All rights reserved.
-          <div class="float-right d-none d-sm-inline-block">
-          
-          </div>
-          <br>
-          <h1> </h1>
-        </footer>
+<?php include_once 'include/footer.php'; ?>  
 </div>
 
 <!-- jQuery -->
