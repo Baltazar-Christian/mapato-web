@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\DebtController;
 use App\Http\Controllers\Api\IncomeController;
 use App\Http\Controllers\Api\SavingsController;
 use App\Http\Controllers\Api\ExpensesController;
