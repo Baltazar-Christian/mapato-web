@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SavingsController;
+use App\Http\Controllers\ExpensesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,28 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/savings/{id}', [SavingsController::class, 'destroy'])->name('savings.destroy');
 });
 // End
+
+
+// Define the web routes for the Expenses module
+Route::middleware(['auth'])->group(function () {
+    // Show the list of expenses
+    Route::get('/expenses', [ExpensesController::class, 'index'])->name('expenses.index');
+
+    // Show the form for creating a new expense
+    Route::get('/expenses/create', [ExpensesController::class, 'create'])->name('expenses.create');
+
+    // Store a new expense
+    Route::post('/expenses', [ExpensesController::class, 'store'])->name('expenses.store');
+
+    // Show the form for editing an existing expense
+    Route::get('/expenses/{id}/edit', [ExpensesController::class, 'edit'])->name('expenses.edit');
+
+    // Update an existing expense
+    Route::put('/expenses/{id}', [ExpensesController::class, 'update'])->name('expenses.update');
+
+    // Delete an existing expense
+    Route::delete('/expenses/{id}', [ExpensesController::class, 'destroy'])->name('expenses.destroy');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

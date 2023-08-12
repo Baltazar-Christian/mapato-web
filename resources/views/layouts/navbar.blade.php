@@ -26,7 +26,7 @@
             </li>
             <li class="nav-item ">
                 {{-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> --}}
-                <a href="earnings.php" class="nav-link text-light">Expenses</a>
+                <a href="{{ route('expenses.index') }}" class="nav-link text-light">Expenses</a>
             </li>
             <li class="nav-item ">
                 {{-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> --}}

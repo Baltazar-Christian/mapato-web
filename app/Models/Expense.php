@@ -2,10 +2,24 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Expense extends Model
 {
     use HasFactory;
+
+    protected $table = 'expenses';
+  
+    protected $fillable = [
+        'amount',
+        'description',
+        // Add other fillable fields as needed
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

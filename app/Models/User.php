@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Income;
+use App\Models\Expense;
 use App\Models\Savings;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
@@ -55,5 +56,11 @@ class User extends Authenticatable
     public function savings()
     {
         return $this->hasMany(Savings::class);
+    }
+
+    
+    public function expenses()
+    {
+        return $this->hasMany(Expense::class);
     }
 }
