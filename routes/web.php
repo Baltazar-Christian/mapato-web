@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SavingsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,18 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/income/{id}/edit', [IncomeController::class, 'edit'])->name('income.edit');
     Route::put('/income/{id}', [IncomeController::class, 'update'])->name('income.update');
     Route::delete('/income/{id}', [IncomeController::class, 'destroy'])->name('income.destroy');
+});
+// End
+
+
+// For Savings
+Route::middleware(['auth'])->group(function () {
+    Route::get('/savings', [SavingsController::class, 'index'])->name('savings.index');
+    Route::get('/savings/create', [SavingsController::class, 'create'])->name('savings.create');
+    Route::post('/savings', [SavingsController::class, 'store'])->name('savings.store');
+    Route::get('/savings/{id}/edit', [SavingsController::class, 'edit'])->name('savings.edit');
+    Route::put('/savings/{id}', [SavingsController::class, 'update'])->name('savings.update');
+    Route::delete('/savings/{id}', [SavingsController::class, 'destroy'])->name('savings.destroy');
 });
 // End
 
