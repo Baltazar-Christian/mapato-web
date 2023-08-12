@@ -28,7 +28,9 @@
     <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}"><!-- Add SweetAlert2 CSS and JavaScript -->
+    <link rel="stylesheet" href="{{ asset('css/sweetalert2.min.css') }}">
+    <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
 </head>
 <style>
     body {
@@ -63,7 +65,7 @@
             <h1> </h1>
         </footer>
     </div>
-
+ 
     <!-- jQuery -->
     <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
     <!-- jQuery UI 1.11.4 -->
@@ -98,6 +100,12 @@
     <script src="{{ asset('dist/js/demo.js') }}"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+        $(".alert").slideDown(300).delay(2000).slideUp(300);
+    });
+    
+    </script>
     <script>
         $(function() {
             /* ChartJS

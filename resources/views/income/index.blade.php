@@ -6,7 +6,7 @@
 
         <div class="row">
             <div class="col-md-12">
-               
+
                 <button type="button" class="btn btn-danger float-right" data-toggle="modal" data-target="#incomeModal">
                     <i class="fa fa-plus"></i> Add Earning
                 </button>
@@ -16,15 +16,10 @@
             <br>
 
             <div class="col-md-12 mt-2">
-                <?php
-        if (isset($_GET["deleted"])) {
-        ?>
-                <p class="btn btn-success btn-block disabled mx-auto text-light " style="margin-left:20px;">Successfully
-                    Deleted !</p>
-                <?php
-        }
 
-        ?>
+                @if (session('success'))
+                    <div class="alert alert-success bg-opacity-20" style="opacity:70%">{{ session('success') }}</div>
+                @endif
                 <div class="card" style="opacity:94%;">
                     <div class="card-header bg-navy">
                         <h3 class="card-title">Daily Earnings Table</h3>
@@ -57,16 +52,26 @@
                                             <td>{{ $income->amount }}</td>
 
                                             <td>
-                                                <button type="button" class="btn btn-sm btn-navy" data-toggle="modal"
+                                                <button type="button" class="btn btn-sm bg-navy" data-toggle="modal"
                                                     data-target="#incomeModal" data-income-id="{{ $income->id }}"
                                                     data-income-amount="{{ $income->date }}"
                                                     data-income-amount="{{ $income->amount }}"
                                                     data-income-source="{{ $income->source }}">
-                                                    {{-- <i class="fa fa-pen "> --}}
+
+                                                    Edit
                                                 </button>
 
-                                                <a class="btn btn-sm bg-danger p-1" href="config/DeleteEarning.php?id= "><i
-                                                        class="fa fa-trash "></i></a>
+                                                <form action="{{ route('income.destroy', $income->id) }}" method="POST"
+                                                    class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-sm btn-danger"
+                                                        onclick="return confirm('Are you sure you want to delete this income?')">
+                                                        {{-- <i class="fa fa-trash "></i> --}}
+                                                             Delete</button>
+                                                </form>
+
+
 
 
                                             </td>

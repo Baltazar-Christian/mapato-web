@@ -20,16 +20,17 @@
                         <input type="date" class="form-control" id="date" name="date" value="{{ isset($income) ? $income->date : old('date') }}" required>
                     </div>
                     <div class="form-group">
-                        <label for="amount">Amount</label>
-                        <input type="number" class="form-control" id="amount" name="amount" value="{{ isset($income) ? $income->amount : old('amount') }}" required>
-                    </div>
-                    <div class="form-group">
                         <label for="source">Source</label>
                         <input type="text" class="form-control" id="source" name="source" value="{{ isset($income) ? $income->source : old('source') }}" required>
                     </div>
+                    <div class="form-group">
+                        <label for="amount">Amount</label>
+                        <input type="number" class="form-control" id="amount" name="amount" value="{{ isset($income) ? $income->amount : old('amount') }}" required>
+                    </div>
+                 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn bg-navy" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-danger">{{ isset($income) ? 'Update' : 'Create' }}</button>
                 </div>
             </form>
