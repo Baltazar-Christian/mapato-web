@@ -39,7 +39,7 @@ background-size: cover;">
     <!-- Navbar -->
     <nav class="navbar navbar-expand bg-navy navbar-light">
         <!-- Left navbar links -->
-        <b><h3 ><a href="index.php" class="text-light"><b><i>Mapato.</i></b></a></h3></b>
+        <b><h3 ><a href="index.php" class="text-light"><b><i class="text-danger">M</i><i>apato</i><i class="text-danger">.</i></b></a></h3></b>
 
 </nav>    
 
@@ -51,6 +51,7 @@ background-size: cover;">
               <div class="text-light bg-navy p-4" style="border-radius:5%;">
                 <h4 class=" text-light " >Welcome to <b><i class="text-danger"> Mapato </i></b>.This is a place where you can easily :</h4>
                 <ul type="none">
+                  <li><h5 class="text-white "><i class="fa fa-arrow-right bg-danger p-1 text-danger" style="border-radius:100%;"></i> Monitor Your Budget</h5> </li>
                   <li><h5 class="text-white "><i class="fa fa-arrow-right bg-danger p-1 text-danger" style="border-radius:100%;"></i> Monitor Daily Expenses</h5> </li>
                   <li><h5 class="text-white "><i class="fa fa-arrow-right bg-danger p-1 text-danger" style="border-radius:100%;"></i> Monitor Daily Earnings</h5> </li>
                   <li><h5 class="text-white "><i class="fa fa-arrow-right bg-danger p-1 text-danger" style="border-radius:100%;"></i> Monitor Daily Savings</h5> </li>
@@ -70,7 +71,7 @@ background-size: cover;">
                   <div class="card-body">
                     <div class="form-group">
                       <label for="exampleInputEmail1"><i class="fa fa-envelope"></i> Email</label>
-                      <input  class="form-control" id="exampleInputEmail1"type="email" name="email" :value="old('email')" required autofocus autocomplete="username" required>
+                      <input  class="form-control" id="exampleInputEmail1"type="email" name="email" :value="old('email')" placeholder="Enter Email" required autofocus autocomplete="username" required>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1"><i class="fa fa-lock"></i> Password</label>
