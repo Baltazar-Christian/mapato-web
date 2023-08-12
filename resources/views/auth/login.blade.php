@@ -94,7 +94,7 @@ background-size: cover;">
                   <!-- /.card-body -->
                   <div class="card-footer">
                     <button type="submit" name="login" class="btn btn-danger">Log In</button>
-                    <a href="register.php" class="btn bg-navy">Create Account</a>
+                    <a href="{{ url('/register')}}" class="btn bg-navy">Create Account</a>
                    
                   </div>
 
