@@ -13,15 +13,13 @@ return new class extends Migration
     {
         Schema::create('debts', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->string('creditor');
-            $table->string('debt_type');
-            $table->decimal('amount', 10, 2);
-            $table->decimal('interest_rate', 5, 2);
-            $table->decimal('monthly_payment', 10, 2);
-            $table->date('due_date');
-            // Add other debt-related fields here
+            $table->unsignedBigInteger('user_id'); // Assuming each debt belongs to a user
+            $table->decimal('amount', 10, 2); // Example: Amount in decimal format
+            $table->string('description');
             $table->timestamps();
+
+            // Define foreign key relationship with the users table
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
