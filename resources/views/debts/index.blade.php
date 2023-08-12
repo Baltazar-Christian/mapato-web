@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-md-12">
 
-                <button type="button" class="btn btn-danger float-right" data-toggle="modal" data-target="#expensesModal">
+                <button type="button" class="btn btn-danger float-right" data-toggle="modal" data-target="#debtsModal">
                     <i class="fa fa-plus"></i> Add Debt
                 </button>
 
@@ -44,28 +44,25 @@
                                 </thead>
                                 <tbody>
                                     <?php $i = 1; ?>
-                                    @foreach ($expenses as $expense)
+                                    @foreach ($debts as $debt)
                                         <tr>
                                             <td>{{ $i++ }}</td>
-                                            <td>{{ $expense->created_at }}</td>
-                                            <td>{{ $expense->description }}</td>
-                                            <td>{{ $expense->amount }}</td>
-                                          
-
+                                            <td>{{ $debt->created_at }}</td>
+                                            <td>{{ $debt->amount }}</td>
+                                            <td>{{ $debt->description }}</td>
                                             <td>
-                                                <button type="button" class="btn btn-sm bg-navy edit-expense-btn" data-toggle="modal" data-target="#expensesModal" data-expense-id="{{ $expense->id }}" data-expense-amount="{{ $expense->amount }}" data-expense-description="{{ $expense->description }}">
+                                                <!-- Button to open the debts modal for editing the record -->
+                                                <button type="button" class="btn btn-sm bg-navy edit-debt-btn" data-toggle="modal" data-target="#debtsModal" data-debt-id="{{ $debt->id }}" data-debt-amount="{{ $debt->amount }}" data-debt-description="{{ $debt->description }}">
                                                     Edit
                                                 </button>
-                                                <form class="d-inline" method="POST" action="{{ route('expenses.destroy', $expense->id) }}">
+                                                <!-- Form for deleting the debt record -->
+                                                <form class="d-inline" method="POST" action="{{ route('debts.destroy', $debt->id) }}">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <form class="d-inline" method="POST" action="{{ route('expenses.destroy', $expense->id) }}">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this expense record?')">
-                                                            Delete
-                                                        </button>
-                                                    </form>
+                                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this debt record?')">
+                                                        Delete
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -92,7 +89,7 @@
 
     </div>
     <!-- Include the income modal -->
-    @include('expenses.modal')
+    @include('debts.modal')
 
 
 
@@ -100,32 +97,32 @@
     {{-- start of scripts --}}
     {{-- @section('scripts') --}}
     <script>
-        // resources/js/savings-modal.js
-// resources/js/expenses-modal.js
+// resources/js/debts-modal.js
 
 $(document).ready(function () {
     // Handle the "Create" button to clear the form
-    $('.create-expense-btn').click(function (e) {
+    $('.create-debt-btn').click(function (e) {
         e.preventDefault();
 
-        var form = $('#expensesForm');
-        form.attr('action', '{{ route('expenses.store') }}');
+        var form = $('#debtsForm');
+        form.attr('action', '{{ route('debts.store') }}');
         form.find('input[name="_method"]').remove();
         form.find('#amount').val('');
         form.find('#description').val('');
 
-        $('#expensesModal').modal('show');
+        $('#debtsModal').modal('show');
     });
 
     // Handle modal close event to reset the form
-    $('#expensesModal').on('hidden.bs.modal', function () {
-        var form = $('#expensesForm');
-        form.attr('action', '{{ route('expenses.store') }}');
+    $('#debtsModal').on('hidden.bs.modal', function () {
+        var form = $('#debtsForm');
+        form.attr('action', '{{ route('debts.store') }}');
         form.find('input[name="_method"]').remove();
         form.find('#amount').val('');
         form.find('#description').val('');
     });
 });
+
 
     </script>
     {{-- @endsection --}}
