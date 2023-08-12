@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Debt;
 use App\Models\Income;
 use App\Models\Expense;
 use App\Models\Savings;
@@ -62,5 +63,10 @@ class User extends Authenticatable
     public function expenses()
     {
         return $this->hasMany(Expense::class);
+    }
+
+    public function debts()
+    {
+        return $this->hasMany(Debt::class);
     }
 }
