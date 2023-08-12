@@ -44,8 +44,7 @@ background-size: cover;">
     <nav class="navbar navbar-expand bg-navy navbar-light">
         <!-- Left navbar links -->
         <b>
-            <h3><a href="index.php" class="text-light"><b><i class="text-danger">M</i><i>apato</i><i
-                            class="text-danger">.</i></b></a></h3>
+            <h3><a href="index.php" class="text-light"><b><i class="text-danger">M</i><i>apato</i><i class="text-danger">.</i></b></a></h3>
         </b>
 
     </nav>
