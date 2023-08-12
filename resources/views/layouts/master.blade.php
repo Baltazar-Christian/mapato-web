@@ -30,6 +30,10 @@
     <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}"><!-- Add SweetAlert2 CSS and JavaScript -->
     <link rel="stylesheet" href="{{ asset('css/sweetalert2.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
     <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
 </head>
 <style>
@@ -99,6 +103,9 @@
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('dist/js/demo.js') }}"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="{{ asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{ asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<script src="{{ asset('plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
     <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
     <script>
         $(document).ready(function() {
