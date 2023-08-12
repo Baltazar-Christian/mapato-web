@@ -1,9 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use App\Models\Savings;
 use Illuminate\Http\Request;
+use App\Models\Savings;
 
 class SavingsController extends Controller
 {
@@ -30,7 +29,7 @@ class SavingsController extends Controller
             // Add other validation rules as needed
         ]);
 
-        // Create a new savings record
+        // Create a new savings record for the authenticated user
         auth()->user()->savings()->create([
             'amount' => $request->input('amount'),
             'description' => $request->input('description'),
@@ -44,6 +43,11 @@ class SavingsController extends Controller
     {
         // Retrieve the savings record by ID for editing
         $savings = Savings::findOrFail($id);
+
+        // Ensure that the savings record belongs to the authenticated user
+        if ($savings->user_id != auth()->user()->id) {
+            abort(403, 'Unauthorized action.');
+        }
 
         return view('savings.edit', compact('savings'));
     }
@@ -59,6 +63,12 @@ class SavingsController extends Controller
 
         // Update the savings record
         $savings = Savings::findOrFail($id);
+
+        // Ensure that the savings record belongs to the authenticated user
+        if ($savings->user_id != auth()->user()->id) {
+            abort(403, 'Unauthorized action.');
+        }
+
         $savings->update([
             'amount' => $request->input('amount'),
             'description' => $request->input('description'),
@@ -72,6 +82,12 @@ class SavingsController extends Controller
     {
         // Delete the savings record
         $savings = Savings::findOrFail($id);
+
+        // Ensure that the savings record belongs to the authenticated user
+        if ($savings->user_id != auth()->user()->id) {
+            abort(403, 'Unauthorized action.');
+        }
+
         $savings->delete();
 
         return redirect()->route('savings.index')->with('success', 'Savings record deleted successfully');
