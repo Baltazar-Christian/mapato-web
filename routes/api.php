@@ -9,18 +9,21 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
+     // User
+     Route::get('/user', [AuthController::class, 'user']);
+     Route::put('/user', [AuthController::class, 'update']);
+     Route::post('/logout', [AuthController::class, 'logout']);
+
     // Get all income records for the authenticated user
     Route::get('/income', [IncomeController::class, 'index']);
-
     // Create a new income record
     Route::post('/income', [IncomeController::class, 'store']);
-
     // Get a specific income record for the authenticated user
     Route::get('/income/{income}', [IncomeController::class, 'show']);
-
     // Update a specific income record for the authenticated user
     Route::put('/income/{income}', [IncomeController::class, 'update']);
-
     // Delete a specific income record for the authenticated user
     Route::delete('/income/{income}', [IncomeController::class, 'destroy']);
+
+
 });

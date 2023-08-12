@@ -1,88 +1,66 @@
 <?php
-// app/Http/Controllers/Api/IncomeController.php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Income;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class IncomeController extends Controller
 {
     public function index()
     {
-        // Get income records for the authenticated user
-        $income = Auth::user()->income;
+        // List income sources for the user
+        $incomes = Income::where('user_id', auth()->id())->get();
+        return view('income.index', compact('incomes'));
+    }
 
-        return response()->json($income);
+    public function create()
+    {
+        // Show income creation form
+        return view('income.create');
     }
 
     public function store(Request $request)
     {
-        // Validate the request data
-        $request->validate([
-            'amount' => 'required|numeric',
-            'description' => 'required|string',
-            // Add other validation rules as needed
-        ]);
-
-        // Create a new income record for the authenticated user
-        $income = new Income([
-            'user_id' => Auth::id(),
+        // Store new income record
+        Income::create([
+            'user_id' => auth()->id(),
+            'source' => $request->input('source'),
             'amount' => $request->input('amount'),
-            'description' => $request->input('description'),
-            // Set other attributes as needed
+            'date' => $request->input('date'),
+            // Add other fields
         ]);
-        $income->save();
 
-        return response()->json($income, 201);
+        return redirect()->route('income.index')->with('success', 'Earning added successfully');
     }
 
-    public function show(Income $income)
+
+    public function update(Request $request, $id)
     {
-        // Check if the income record belongs to the authenticated user
-        if ($income->user_id !== Auth::id()) {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
+        $income = Income::findOrFail($id);
 
-        return response()->json($income);
-    }
-
-    public function update(Request $request, Income $income)
-    {
-        // Check if the income record belongs to the authenticated user
-        if ($income->user_id !== Auth::id()) {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
-
-        // Validate the request data
+        // Validation for updated data
         $request->validate([
             'amount' => 'required|numeric',
-            'description' => 'required|string',
+            'source' => 'required|string|max:255',
             // Add other validation rules as needed
         ]);
 
-        // Update the income record
+        // Update income record
         $income->update([
             'amount' => $request->input('amount'),
-            'description' => $request->input('description'),
-            // Update other attributes as needed
+            'source' => $request->input('source'),
+            // Update other fields as needed
         ]);
 
-        return response()->json($income);
+        return redirect()->route('income.index')->with('success', 'Earning updated successfully');
     }
 
-    public function destroy(Income $income)
+    public function destroy($id)
     {
-        // Check if the income record belongs to the authenticated user
-        if ($income->user_id !== Auth::id()) {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
-
-        // Delete the income record
+        $income = Income::findOrFail($id);
         $income->delete();
 
-        return response()->json(null, 204);
+        return redirect()->route('income.index')->with('success', 'Earning deleted successfully');
     }
 }
