@@ -7,7 +7,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Debt;
 
-class DebtController extends Controller
+class DebtsController extends Controller
 {
     public function index()
     {

@@ -30,7 +30,7 @@
             </li>
             <li class="nav-item ">
                 {{-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> --}}
-                <a href="earnings.php" class="nav-link text-light">Debts</a>
+                <a href="{{ route('debts.index') }}" class="nav-link text-light">Debts</a>
             </li>
 
         </ul>

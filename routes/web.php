@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DebtsController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SavingsController;
@@ -71,6 +72,19 @@ Route::middleware(['auth'])->group(function () {
 
     // Delete an existing expense
     Route::delete('/expenses/{id}', [ExpensesController::class, 'destroy'])->name('expenses.destroy');
+});
+
+
+
+
+// Define the web routes for the Debts module
+Route::middleware(['auth'])->group(function () {
+    Route::get('/debts', [DebtsController::class, 'index'])->name('debts.index');
+    Route::get('/debts/create', [DebtsController::class, 'create'])->name('debts.create');
+    Route::post('/debts', [DebtsController::class, 'store'])->name('debts.store');
+    Route::get('/debts/{id}/edit', [DebtsController::class, 'edit'])->name('debts.edit');
+    Route::put('/debts/{id}', [DebtsController::class, 'update'])->name('debts.update');
+    Route::delete('/debts/{id}', [DebtsController::class, 'destroy'])->name('debts.destroy');
 });
 
 Route::middleware('auth')->group(function () {

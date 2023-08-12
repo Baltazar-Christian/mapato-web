@@ -13,6 +13,12 @@ class Debt extends Model
 
       
     protected $table = 'debts';
+    protected $fillable = [
+        'user_id',
+        'amount',
+        'description',
+        // Add other fillable fields as needed
+    ];
 
     public function user()
     {
