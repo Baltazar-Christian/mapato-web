@@ -159,7 +159,7 @@ body {
 <div class="mt-2">
     <footer class="fixed-bottom bg-navy text-center mt-2 mb-0" style="height:100px;">
         <br>
-          <strong>Copyright &copy; 2022 <a href="" class="text-danger">TazarChriss</a>.</strong>
+          <strong>Copyright &copy; @php  echo date('Y'); @endphp  <a href="" class="text-danger">TazarChriss</a>.</strong>
           All rights reserved.
           <div class="float-right d-none d-sm-inline-block">
           
