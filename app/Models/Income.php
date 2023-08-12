@@ -11,7 +11,7 @@ class Income extends Model
     use HasFactory;
     
      protected $table = 'incomes';
-     protected $fillable = ['amount', 'source', 'user_id'];
+     protected $fillable = ['amount', 'source', 'user_id','date'];
 
      public function user()
      {
