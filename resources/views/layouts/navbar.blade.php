@@ -1,7 +1,8 @@
 {{-- This is the navbar file --}}
 <nav class="navbar navbar-expand-lg navbar-light bg-navy">
     {{-- <a class="navbar-brand" href="#">Navbar</a> --}}
-    <h3><a href="index.php" class="text-light"><b><i class="text-danger">M</i><i>apato</i><i class="text-danger">.</i></b></a></h3>
+    <h3><a href="index.php" class="text-light"><b><i class="text-danger">M</i><i>apato</i><i
+                    class="text-danger">.</i></b></a></h3>
     <button class="navbar-toggler text-light" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon text-light"></span>
@@ -22,7 +23,7 @@
             </li>
             <li class="nav-item ">
                 {{-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> --}}
-                <a href="{{ route('savings.index')}}" class="nav-link text-light">Savings</a>
+                <a href="{{ route('savings.index') }}" class="nav-link text-light">Savings</a>
             </li>
             <li class="nav-item ">
                 {{-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> --}}
@@ -39,10 +40,14 @@
             <li class="nav-item dropdown">
                 <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdown" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="text-danger fa fa-user-tie"></i> {{ Auth::user()->fname.' '.Auth::user()->lname }}
+                    <i class="text-danger fa fa-user-tie"></i> {{ Auth::user()->fname . ' ' . Auth::user()->lname }}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#"><b>Profile</b> </a>
+
+                    <a class="dropdown-item" href="{{ route('profile.show') }}">My Profile</a>
+
+                    <a class="dropdown-item" href="{{ route('profile.edit') }}">Edit Profile</a>
+
                     <div class="dropdown-divider"></div>
                     <!-- Authentication -->
                     <form method="POST" action="{{ route('logout') }}">
