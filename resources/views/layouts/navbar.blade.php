@@ -13,9 +13,9 @@
                 {{-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> --}}
                 <a href="{{ url('/dashboard') }}" class="nav-link text-light">Dashboard</a>
             </li>
-            <li class="nav-item ">
+            {{-- <li class="nav-item ">
                 <a href="earnings.php" class="nav-link text-light">Budgets</a>
-            </li>
+            </li> --}}
             <li class="nav-item ">
                 {{-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> --}}
                 <a href="earnings.php" class="nav-link text-light">Earnings</a>
@@ -39,7 +39,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdown" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="text-danger fa fa-user-tie"></i> {{ Auth::user()->name }}
+                    <i class="text-danger fa fa-user-tie"></i> {{ Auth::user()->fname.' '.Auth::user()->lname }}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#"><b>Profile</b> </a>
