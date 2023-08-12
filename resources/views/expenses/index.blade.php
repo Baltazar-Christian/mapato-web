@@ -44,31 +44,28 @@
                                 </thead>
                                 <tbody>
                                     <?php $i = 1; ?>
-                                    @foreach ($expenses as $saving)
+                                    @foreach ($expenses as $expense)
                                         <tr>
                                             <td>{{ $i++ }}</td>
-                                            <td>{{ $saving->created_at }}</td>
-                                            <td>{{ $saving->description }}</td>
-                                            <td>{{ $saving->amount }}</td>
+                                            <td>{{ $expense->created_at }}</td>
+                                            <td>{{ $expense->description }}</td>
+                                            <td>{{ $expense->amount }}</td>
+                                          
 
                                             <td>
-                                                <button type="button" class="btn btn-sm bg-navy" data-toggle="modal"
-                                                    data-target="#savingsModal" data-savings-id="{{ $saving->id }}"
-                                                    data-savings-amount="{{ $saving->amount }}"
-                                                    data-savings-description="{{ $saving->description }}">
+                                                <button type="button" class="btn btn-sm bg-navy edit-expense-btn" data-toggle="modal" data-target="#expensesModal" data-expense-id="{{ $expense->id }}" data-expense-amount="{{ $expense->amount }}" data-expense-description="{{ $expense->description }}">
                                                     Edit
                                                 </button>
-                                                <!-- Delete button with a confirmation prompt -->
-                                                <form class="d-inline" method="POST"
-                                                    action="{{ route('savings.destroy', $saving->id) }}">
+                                                <form class="d-inline" method="POST" action="{{ route('expenses.destroy', $expense->id) }}">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger"
-                                                        onclick="return confirm('Are you sure you want to delete this savings record?')">
-                                                        Delete
-                                                    </button>
-                                                </form>
-
+                                                    <form class="d-inline" method="POST" action="{{ route('expenses.destroy', $expense->id) }}">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this expense record?')">
+                                                            Delete
+                                                        </button>
+                                                    </form>
                                             </td>
                                         </tr>
                                     @endforeach

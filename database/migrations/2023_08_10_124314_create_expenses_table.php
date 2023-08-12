@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('expenses', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->string('category');
-            $table->decimal('amount', 10, 2);
-            $table->date('date');
-            // Add other expense-related fields here
+            $table->unsignedBigInteger('user_id'); // Assuming each expense belongs to a user
+            $table->decimal('amount', 10, 2); // Example: Amount in decimal format
+            $table->string('description');
             $table->timestamps();
+
+            // Define foreign key relationship with the users table
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
