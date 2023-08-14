@@ -4,9 +4,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\DebtController;
+use App\Http\Controllers\Api\TotalControlle;
+use App\Http\Controllers\Api\TotalController;
 use App\Http\Controllers\Api\IncomeController;
 use App\Http\Controllers\Api\SavingsController;
 use App\Http\Controllers\Api\ExpensesController;
+
 
 // Public routes
 Route::post('/register', [AuthController::class, 'register']);
@@ -74,4 +77,9 @@ Route::middleware('auth:sanctum')->group(function () {
     
         // Delete a specific debt record for the authenticated user
         Route::delete('/debts/{debt}', [DebtController::class, 'destroy']);
+
+        Route::get('/total-income', [TotalController::class, 'getTotalIncome']);
+        Route::get('/total-savings', [TotalController::class, 'getTotalSavings']);
+        Route::get('/total-expenses', [TotalController::class, 'getTotalExpenses']);
+        Route::get('/total-debts', [TotalController::class, 'getTotalDebts']);
 });
