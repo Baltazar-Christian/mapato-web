@@ -18,7 +18,7 @@
                   <div class="card bg-success">
                     <div class="inner">
                         <br>
-                      <h3> TSH</h3>
+                        <h3> TSH {{ number_format(Auth::user()->incomes->sum('amount'),2) }}</h3>
       
                       <p>Total Earnings</p>
                     </div>
@@ -35,7 +35,7 @@
                     <div class="card bg-warning">
                       <div class="inner">
                         <br>
-                      <h3>TSH</h3>
+                        <h3> TSH {{ number_format(Auth::user()->savings->sum('savings'),2) }}</h3>
         
                         <p>Total Savings</p>
                       </div>
@@ -50,7 +50,7 @@
                     <div class="card bg-orange">
                       <div class="inner">
                         <br>
-                      <h3>TSH</h3>
+                        <h3> TSH {{ number_format(Auth::user()->expenses->sum('amount'),2) }}</h3>
         
                         <p>Total Expenses</p>
                       </div>
@@ -65,7 +65,7 @@
                     <div class="card bg-danger">
                       <div class="inner">
                       <br>
-                      <h3> TSH</h3>
+                      <h3> TSH {{ number_format(Auth::user()->debts->sum('amount'),2) }}</h3>
                         <p>Total Debts</p>
                       </div>
                     
