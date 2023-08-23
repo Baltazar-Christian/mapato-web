@@ -10,7 +10,7 @@ class IncomeController extends Controller
     public function index()
     {
         // List income sources for the user
-        $incomes = Income::where('user_id', auth()->id())->get();
+        $incomes = Income::where('user_id', auth()->id())->latest()->get();
         return view('income.index', compact('incomes'));
     }
 

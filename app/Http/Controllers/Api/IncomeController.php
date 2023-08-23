@@ -14,7 +14,7 @@ class IncomeController extends Controller
     {
         // Get income records for the authenticated user
         $user = Auth::user();
-        $income = Income::where('user_id', auth()->id())->get();
+        $income = Income::where('user_id', auth()->id())->latest()->get();
 
 
         return response()->json($income);

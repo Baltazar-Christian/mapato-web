@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-md-12">
 
-                <button type="button" class="btn btn-danger float-right" data-toggle="modal" data-target="#incomeModal">
+                <button type="button" class="btn btn-danger float-right" data-toggle="modal" data-target="#IncomeModal">
                     <i class="fa fa-plus"></i> Add Earning
                 </button>
 
