@@ -9,7 +9,8 @@ class SavingsController extends Controller
     public function index()
     {
         // Retrieve all savings records for the authenticated user
-        $savings = auth()->user()->savings;
+        // $savings = auth()->user()->savings->lates();
+        $savings = Savings::where('user_id', auth()->id())->latest()->get();
 
         return view('savings.index', compact('savings'));
     }
