@@ -35,7 +35,7 @@
                     <div class="card bg-warning">
                       <div class="inner">
                         <br>
-                        <h3> TSH {{ number_format(Auth::user()->savings->sum('savings'),2) }}</h3>
+                        <h3> TSH {{ number_format(Auth::user()->savings->sum('amount'),2) }}</h3>
         
                         <p>Total Savings</p>
                       </div>
