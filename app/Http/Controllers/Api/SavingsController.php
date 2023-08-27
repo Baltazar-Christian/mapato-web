@@ -77,9 +77,9 @@ class SavingsController extends Controller
     public function destroy(Savings $savings)
     {
         // Check if the savings record belongs to the authenticated user
-        if ($savings->user_id !== Auth::id()) {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
+        // if ($savings->user_id !== Auth::id()) {
+        //     return response()->json(['error' => 'Unauthorized'], 401);
+        // }
 
         // Delete the savings record
         $savings->delete();
