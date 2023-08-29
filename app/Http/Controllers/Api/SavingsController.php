@@ -74,7 +74,7 @@ class SavingsController extends Controller
         return response()->json($savings);
     }
 
-    public function destroy(Savings $savings)
+    public function destroy( $id)
     {
         // Check if the savings record belongs to the authenticated user
         // if ($savings->user_id !== Auth::id()) {
@@ -82,6 +82,7 @@ class SavingsController extends Controller
         // }
 
         // Delete the savings record
+        $savings=Savings::where('id',$id)->first();
         $savings->delete();
 
         return response()->json(null, 204);

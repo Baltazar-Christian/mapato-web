@@ -68,13 +68,13 @@ Route::middleware('auth:sanctum')->group(function () {
 
         // Create a new debt record
         Route::post('/debts', [DebtController::class, 'store']);
-    
+
         // Get a specific debt record for the authenticated user
         Route::get('/debts/{debt}', [DebtController::class, 'show']);
-    
+
         // Update a specific debt record for the authenticated user
         Route::put('/debts/{debt}', [DebtController::class, 'update']);
-    
+
         // Delete a specific debt record for the authenticated user
         Route::delete('/debts/{debt}', [DebtController::class, 'destroy']);
 
