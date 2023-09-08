@@ -12,12 +12,12 @@ class AuthController extends Controller
   //Register user
   public function register(Request $request)
   {
-      // Validate parameters 
+      // Validate parameters
       $attrs=$request->validate(
           [
               'name'=>'required|string',
-              'fname'=>'required|string',
-              'lname'=>'required|string',
+            //   'fname'=>'required|string',
+            //   'lname'=>'required|string',
               'email'=>'required|email|unique:users,email',
               'password'=>'required|min:6|confirmed'
           ]
@@ -27,8 +27,8 @@ class AuthController extends Controller
       $user= User::create(
           [
               'name' => $attrs['name'],
-              'fname' => $attrs['fname'],
-              'lname' => $attrs['lname'],
+            //   'fname' => $attrs['fname'],
+            //   'lname' => $attrs['lname'],
               'email' => $attrs['email'],
               'password' =>bcrypt($attrs['password'])
           ]
@@ -39,14 +39,14 @@ class AuthController extends Controller
           'user'=>$user,
           'token'=>$user->createToken('secret')->plainTextToken
       ],200
-          
+
       );
   }
 
-  // For login user 
+  // For login user
   public function login(Request $request)
   {
-      // Validate parameters 
+      // Validate parameters
       $attrs=$request->validate(
           [
               'email'=>'required|email',
@@ -70,7 +70,7 @@ class AuthController extends Controller
           'user'=>$user,
           'token'=> $user->createToken('secret')->plainTextToken
       ]
-          
+
       );
   }
 
@@ -86,7 +86,7 @@ class AuthController extends Controller
   }
 
 
-  // get user details 
+  // get user details
   public function user()
   {
       return response(

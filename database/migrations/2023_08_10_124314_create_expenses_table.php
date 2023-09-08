@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('expenses', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id'); // Assuming each expense belongs to a user
-            $table->decimal('amount', 10, 2); // Example: Amount in decimal format
+            $table->decimal('budget', 10, 2)->nullable(); // Example: Amount in decimal format
+            $table->decimal('amount', 10, 2)->nullable(); // Example: Amount in decimal format
             $table->string('description');
             $table->timestamps();
 
