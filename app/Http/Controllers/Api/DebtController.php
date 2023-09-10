@@ -23,6 +23,7 @@ class DebtController extends Controller
     {
         // Validate the request data
         $request->validate([
+            'owner' => 'required|string',
             'amount' => 'required|numeric',
             'description' => 'required|string',
             // Add other validation rules as needed
@@ -31,6 +32,7 @@ class DebtController extends Controller
         // Create a new debt record for the authenticated user
         $debt = new Debt([
             'user_id' => Auth::id(),
+            'owner' => $request->input('owner'),
             'amount' => $request->input('amount'),
             'description' => $request->input('description'),
             // Set other attributes as needed

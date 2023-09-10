@@ -26,6 +26,7 @@ class ExpensesController extends Controller
         // Validate the input data
         $request->validate([
             'amount' => 'required|numeric',
+            'bamount' => 'required|numeric',
             'description' => 'required|string|max:255',
             // Add other validation rules as needed
         ]);
@@ -33,6 +34,7 @@ class ExpensesController extends Controller
         // Create a new expenses record for the authenticated user
         auth()->user()->expenses()->create([
             'amount' => $request->input('amount'),
+            'bamount' => $request->input('bamount'),
             'description' => $request->input('description'),
             // Assign other fields here
         ]);

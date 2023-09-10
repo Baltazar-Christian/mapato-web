@@ -11,10 +11,11 @@ class Debt extends Model
     use HasFactory;
 
 
-      
+
     protected $table = 'debts';
     protected $fillable = [
         'user_id',
+        'owner',
         'amount',
         'description',
         // Add other fillable fields as needed

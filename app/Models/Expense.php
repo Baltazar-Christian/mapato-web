@@ -11,10 +11,11 @@ class Expense extends Model
     use HasFactory;
 
     protected $table = 'expenses';
-  
+
     protected $fillable = [
         'user_id',
         'amount',
+        'bamount',
         'description',
         // Add other fillable fields as needed
     ];
