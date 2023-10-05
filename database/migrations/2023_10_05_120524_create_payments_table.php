@@ -11,16 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('savings', function (Blueprint $table) {
+        Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->string('name');
-            $table->decimal('amount', 10, 2);
-            $table->string('description');
+            $table->unsignedBigInteger('saving_id');
+            $table->string('payment');
             $table->timestamps();
 
-            // Define foreign key relationship
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('saving_id')->references('id')->on('savings')->onDelete('cascade');
         });
     }
 
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('savings');
+        Schema::dropIfExists('payments');
     }
 };

@@ -27,6 +27,8 @@ class SavingsController extends Controller
         $request->validate([
             'amount' => 'required|numeric',
             'description' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
+
             // Add other validation rules as needed
         ]);
 
@@ -34,6 +36,8 @@ class SavingsController extends Controller
         auth()->user()->savings()->create([
             'amount' => $request->input('amount'),
             'description' => $request->input('description'),
+            'name' => $request->input('name'),
+
             // Assign other fields here
         ]);
 
@@ -59,6 +63,8 @@ class SavingsController extends Controller
         $request->validate([
             'amount' => 'required|numeric',
             'description' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
+
             // Add other validation rules as needed
         ]);
 
@@ -73,6 +79,8 @@ class SavingsController extends Controller
         $savings->update([
             'amount' => $request->input('amount'),
             'description' => $request->input('description'),
+            'name' => $request->input('name'),
+
             // Update other fields as needed
         ]);
 

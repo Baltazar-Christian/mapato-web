@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\DebtController;
 use App\Http\Controllers\Api\TotalControlle;
 use App\Http\Controllers\Api\TotalController;
 use App\Http\Controllers\Api\IncomeController;
+use App\Http\Controllers\Api\PaymentController;
 use App\Http\Controllers\Api\SavingsController;
 use App\Http\Controllers\Api\ExpensesController;
 
@@ -46,6 +47,9 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Delete a specific savings record for the authenticated user
     Route::delete('/savings/{savings}', [SavingsController::class, 'destroy']);
+    Route::post('savings/{saving_goal}/payments', [PaymentController::class, 'store']);
+    Route::get('savings/{saving_goal}/payments', [PaymentController::class, 'index']);
+    Route::delete('/savings/{saving}/payments/{payment}', [PaymentController::class, 'destroy']);
 
     // Get all expenses records for the authenticated user
     Route::get('/expenses', [ExpensesController::class, 'index']);
@@ -63,23 +67,23 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/expenses/{expenses}', [ExpensesController::class, 'destroy']);
 
 
-        // Get all debt records for the authenticated user
-        Route::get('/debts', [DebtController::class, 'index']);
+    // Get all debt records for the authenticated user
+    Route::get('/debts', [DebtController::class, 'index']);
 
-        // Create a new debt record
-        Route::post('/debts', [DebtController::class, 'store']);
+    // Create a new debt record
+    Route::post('/debts', [DebtController::class, 'store']);
 
-        // Get a specific debt record for the authenticated user
-        Route::get('/debts/{debt}', [DebtController::class, 'show']);
+    // Get a specific debt record for the authenticated user
+    Route::get('/debts/{debt}', [DebtController::class, 'show']);
 
-        // Update a specific debt record for the authenticated user
-        Route::put('/debts/{debt}', [DebtController::class, 'update']);
+    // Update a specific debt record for the authenticated user
+    Route::put('/debts/{debt}', [DebtController::class, 'update']);
 
-        // Delete a specific debt record for the authenticated user
-        Route::delete('/debts/{debt}', [DebtController::class, 'destroy']);
+    // Delete a specific debt record for the authenticated user
+    Route::delete('/debts/{debt}', [DebtController::class, 'destroy']);
 
-        Route::get('/total-income', [TotalController::class, 'getTotalIncome']);
-        Route::get('/total-savings', [TotalController::class, 'getTotalSavings']);
-        Route::get('/total-expenses', [TotalController::class, 'getTotalExpenses']);
-        Route::get('/total-debts', [TotalController::class, 'getTotalDebts']);
+    Route::get('/total-income', [TotalController::class, 'getTotalIncome']);
+    Route::get('/total-savings', [TotalController::class, 'getTotalSavings']);
+    Route::get('/total-expenses', [TotalController::class, 'getTotalExpenses']);
+    Route::get('/total-debts', [TotalController::class, 'getTotalDebts']);
 });
