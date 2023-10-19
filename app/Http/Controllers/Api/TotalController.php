@@ -16,6 +16,10 @@ class TotalController extends Controller
     {
         $userId = Auth::id();
         $totalIncome = Income::where('user_id', $userId)->sum('amount');
+
+
+
+
         return response()->json(['totalIncome' => $totalIncome]);
     }
 

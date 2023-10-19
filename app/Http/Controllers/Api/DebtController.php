@@ -63,6 +63,8 @@ class DebtController extends Controller
         $request->validate([
             'amount' => 'required|numeric',
             'description' => 'required|string',
+            'owner' => 'required|string',
+
             // Add other validation rules as needed
         ]);
 
@@ -70,6 +72,8 @@ class DebtController extends Controller
         $debt->update([
             'amount' => $request->input('amount'),
             'description' => $request->input('description'),
+            'owner' => $request->input('owner'),
+
             // Update other attributes as needed
         ]);
 

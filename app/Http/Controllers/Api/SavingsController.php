@@ -32,10 +32,11 @@ class SavingsController extends Controller
 
         // Create a new savings record for the authenticated user
         $savings = new Savings([
-            'user_id' => Auth::id(),
+
             'name' => $request->input('name'),
             'amount' => $request->input('amount'),
             'description' => $request->input('description'),
+            'user_id' => Auth::id(),
 
             // Set other attributes as needed
         ]);
@@ -64,7 +65,6 @@ class SavingsController extends Controller
         // Validate the request data
         $request->validate([
             'name' => 'required|string',
-
             'amount' => 'required|numeric',
             'description' => 'required|string',
 

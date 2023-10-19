@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Savings;
+use Illuminate\Support\Facades\Auth;
 
 class SavingsController extends Controller
 {
@@ -33,13 +34,14 @@ class SavingsController extends Controller
         ]);
 
         // Create a new savings record for the authenticated user
-        auth()->user()->savings()->create([
-            'amount' => $request->input('amount'),
-            'description' => $request->input('description'),
-            'name' => $request->input('name'),
+        $savings=new Savings();
+        $savings->name= $request->input('name');
+        $savings->amount=$request->input('amount');
+        $savings->description=$request->input('description');
+        $savings->user_id=Auth::user()->id;
+        $savings->save();
 
-            // Assign other fields here
-        ]);
+
 
         return redirect()->route('savings.index')->with('success', 'Savings record created successfully');
     }

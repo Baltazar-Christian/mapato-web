@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\TotalController;
 use App\Http\Controllers\Api\IncomeController;
 use App\Http\Controllers\Api\PaymentController;
 use App\Http\Controllers\Api\SavingsController;
+use App\Http\Controllers\DebtPaymentController;
 use App\Http\Controllers\Api\ExpensesController;
 
 
@@ -44,7 +45,6 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Update a specific savings record for the authenticated user
     Route::put('/savings/{savings}', [SavingsController::class, 'update']);
-
     // Delete a specific savings record for the authenticated user
     Route::delete('/savings/{savings}', [SavingsController::class, 'destroy']);
     Route::post('savings/{saving_goal}/payments', [PaymentController::class, 'store']);
@@ -81,6 +81,13 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Delete a specific debt record for the authenticated user
     Route::delete('/debts/{debt}', [DebtController::class, 'destroy']);
+
+
+    // For All Debt Payments
+    Route::apiResource('debt-payments', DebtPaymentController::class);
+    Route::get('/debt-payments/{debtPayment}', [DebtPaymentController::class, 'show']);
+    Route::put('/debt-payments/{debtPayment}', [DebtPaymentController::class, 'update']);
+    Route::delete('/debt-payments/{debtPayment}', [DebtPaymentController::class, 'destroy']);
 
     Route::get('/total-income', [TotalController::class, 'getTotalIncome']);
     Route::get('/total-savings', [TotalController::class, 'getTotalSavings']);

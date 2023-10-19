@@ -12,7 +12,7 @@ class Savings extends Model
     use HasFactory;
     protected $table = 'savings';
 
-    protected $fillable = ['id','amount', 'description', 'user_id'];
+    protected $fillable = ['id','name','amount', 'description', 'user_id'];
     public function user()
     {
         return $this->belongsTo(User::class);
