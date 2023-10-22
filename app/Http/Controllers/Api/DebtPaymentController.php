@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Models\Debt;
 use App\Models\DebtPayment;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule;
+
 
 class DebtPaymentController extends Controller
 {
-
 
     public function index( $debt)
     {
@@ -39,13 +40,14 @@ class DebtPaymentController extends Controller
                     // Check if the sum of existing payments plus the new payment exceeds the saving amount
                     if ($debts->payments->sum('payment') + $value > $debts->amount) {
                         $fail('The total payment amount cannot exceed the saving goal amount.');
+                        return response()->json($fail, 403);
+
                     }
 
                 },
             ],
         ]);
 
-        // dd($debts->payments);
 
         // Create and save the new payment
         $payment = new DebtPayment(['payment' => $request->input('payment')]);
@@ -71,6 +73,5 @@ class DebtPaymentController extends Controller
 
         return response()->json(['message' => 'Payment deleted successfully'] ,204);
     }
-
 
 }

@@ -9,7 +9,7 @@ use App\Http\Controllers\Api\TotalController;
 use App\Http\Controllers\Api\IncomeController;
 use App\Http\Controllers\Api\PaymentController;
 use App\Http\Controllers\Api\SavingsController;
-use App\Http\Controllers\DebtPaymentController;
+use App\Http\Controllers\Api\DebtPaymentController;
 use App\Http\Controllers\Api\ExpensesController;
 
 
