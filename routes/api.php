@@ -84,10 +84,11 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
     // For All Debt Payments
-    Route::apiResource('debt-payments', DebtPaymentController::class);
-    Route::get('/debt-payments/{debtPayment}', [DebtPaymentController::class, 'show']);
-    Route::put('/debt-payments/{debtPayment}', [DebtPaymentController::class, 'update']);
-    Route::delete('/debt-payments/{debtPayment}', [DebtPaymentController::class, 'destroy']);
+    // Route::apiResource('debt-payments', DebtPaymentController::class);
+    Route::post('debts/{id}/payments', [DebtPaymentController::class, 'store']);
+    Route::get('debts/{id}/payments', [DebtPaymentController::class, 'index']);
+    Route::delete('/debts/{id}/payments/{payment}', [DebtPaymentController::class, 'destroy']);
+
 
     Route::get('/total-income', [TotalController::class, 'getTotalIncome']);
     Route::get('/total-savings', [TotalController::class, 'getTotalSavings']);

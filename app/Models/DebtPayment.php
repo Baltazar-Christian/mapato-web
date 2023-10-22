@@ -12,7 +12,10 @@ class DebtPayment extends Model
 
     protected $table = 'debt_payments';
 
-    protected $fillable = ['payment'];
+    protected $fillable = [
+        'debt_id',
+        'payment'
+    ];
 
     public function Debt()
     {
