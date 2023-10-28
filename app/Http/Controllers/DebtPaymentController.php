@@ -50,6 +50,10 @@ class DebtPaymentController extends Controller
         // Create and save the new payment
         $payment = new DebtPayment(['payment' => $request->input('payment')]);
         $debts->payments()->save($payment);
+        // For Paid Amount
+        $paidAmount=$debts->payments->sum('payment');
+        $debts->pamount=$paidAmount;
+        $debts->update();
 
         return response()->json($payment, 201);
     }

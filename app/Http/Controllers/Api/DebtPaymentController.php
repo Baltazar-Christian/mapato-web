@@ -52,6 +52,11 @@ class DebtPaymentController extends Controller
         // Create and save the new payment
         $payment = new DebtPayment(['payment' => $request->input('payment')]);
         $debts->payments()->save($payment);
+          // For Paid Amount
+          $debts=Debt::where('id',$debt)->first();
+          $paidAmount=$debts->payments->sum('payment');
+          $debts->pamount=$paidAmount;
+          $debts->update();
 
         return response()->json($payment, 201);
     }
@@ -69,6 +74,10 @@ class DebtPaymentController extends Controller
         }
 
         // Delete the payment
+        $amount=$payment->payment;
+        $new_amount=$debt->pamount-$amount;
+        $debt->pamount=$new_amount;
+        $debt->update();
         $payment->delete();
 
         return response()->json(['message' => 'Payment deleted successfully'] ,204);

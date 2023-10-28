@@ -19,7 +19,7 @@ class Debt extends Model
         'owner',
         'amount',
         'description',
-        // Add other fillable fields as needed
+        'pamount'
     ];
 
     public function user()
