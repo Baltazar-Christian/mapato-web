@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id'); // Assuming each debt belongs to a user
             $table->decimal('amount', 10, 2); // Example: Amount in decimal format
-            $table->decimal('pamount', 10, 2)->nullable();
+            $table->decimal('pamount', 10, 2)->default(0);
             $table->string('description');
             $table->string('owner');
             $table->timestamps();

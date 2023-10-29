@@ -37,6 +37,11 @@ class PaymentController extends Controller
         // Create and save the new payment
         $payment = new Payment(['payment' => $request->input('payment')]);
         $saving_goal->payments()->save($payment);
+          // For Saved Amount
+          $saving=Savings::where('id',$saving_goal->id)->first();
+          $paidAmount=$saving->payments->sum('payment');
+          $saving->samount=$paidAmount;
+          $saving->update();
 
         return response()->json($payment, 201);
     }
@@ -48,6 +53,11 @@ class PaymentController extends Controller
             return response()->json(['message' => 'Payment not found'], 404);
         }
 
+        // For Reducing Saved Amount
+        $amount=$payment->payment;
+        $new_amount=$saving->samount-$amount;
+        $saving->samount=$new_amount;
+        $saving->update();
         // Delete the payment
         $payment->delete();
 

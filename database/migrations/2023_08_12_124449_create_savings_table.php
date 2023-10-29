@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->decimal('amount', 10, 2);
+            $table->decimal('samount', 10, 2)->default(0);
             $table->string('description');
             $table->timestamps();
 
