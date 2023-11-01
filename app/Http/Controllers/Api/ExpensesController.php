@@ -55,9 +55,9 @@ class ExpensesController extends Controller
     public function update(Request $request, Expense $expenses)
     {
         // Check if the expenses record belongs to the authenticated user
-        if ($expenses->user_id !== Auth::id()) {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
+        // if ($expenses->user_id !== Auth::id()) {
+        //     return response()->json(['error' => 'Unauthorized'], 401);
+        // }
 
         // Validate the request data
         $request->validate([
@@ -80,9 +80,9 @@ class ExpensesController extends Controller
     public function destroy(Expense $expenses)
     {
         // Check if the expenses record belongs to the authenticated user
-        if ($expenses->user_id !== Auth::id()) {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
+        // if ($expenses->user_id !== Auth::id()) {
+        //     return response()->json(['error' => 'Unauthorized'], 401);
+        // }
 
         // Delete the expenses record
         $expenses->delete();
