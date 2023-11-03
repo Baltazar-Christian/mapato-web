@@ -6,7 +6,10 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Income;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Laravel\Sanctum\Facades\Auth;
+
+// use Illuminate\Support\Facades\Auth;
+
 
 class IncomeController extends Controller
 {
@@ -58,9 +61,9 @@ class IncomeController extends Controller
     public function update(Request $request, Income $income)
     {
         // Check if the income record belongs to the authenticated user
-        // if ($income->user_id !== Auth::id()) {
-        //     return response()->json(['error' => 'Unauthorized'], 401);
-        // }
+        if ($income->user_id !== Auth::id()) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
 
         // Validate the request data
         $request->validate([
@@ -82,9 +85,9 @@ class IncomeController extends Controller
     public function destroy(Income $income)
     {
         // Check if the income record belongs to the authenticated user
-        // if ($income->user_id !== Auth::id()) {
-        //     return response()->json(['error' => 'Unauthorized'], 401);
-        // }
+        if ($income->user_id !== Auth::id()) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
 
         // Delete the income record
         $income->delete();
