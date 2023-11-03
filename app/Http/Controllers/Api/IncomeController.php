@@ -82,9 +82,9 @@ class IncomeController extends Controller
     public function destroy(Income $income)
     {
         // Check if the income record belongs to the authenticated user
-        if ($income->user_id !== Auth::id()) {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
+        // if ($income->user_id !== Auth::id()) {
+        //     return response()->json(['error' => 'Unauthorized'], 401);
+        // }
 
         // Delete the income record
         $income->delete();
