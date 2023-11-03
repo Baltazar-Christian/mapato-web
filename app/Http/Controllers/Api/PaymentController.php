@@ -49,9 +49,9 @@ class PaymentController extends Controller
     public function destroy(Savings $saving, Payment $payment)
     {
         // Check if the payment belongs to the specified saving
-        if ($payment->saving_id !== $saving->id) {
-            return response()->json(['message' => 'Payment not found'], 404);
-        }
+        // if ($payment->saving_id !== $saving->id) {
+        //     return response()->json(['message' => 'Payment not found'], 404);
+        // }
 
         // For Reducing Saved Amount
         $amount=$payment->payment;
