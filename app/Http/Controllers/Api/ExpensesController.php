@@ -61,7 +61,7 @@ class ExpensesController extends Controller
 
         // Validate the request data
         $request->validate([
-            'bamount' => 'required|numeric',
+            // 'bamount' => 'required|numeric',
             'description' => 'required|string',
             // Add other validation rules as needed
         ]);
