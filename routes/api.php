@@ -17,7 +17,7 @@ use App\Http\Controllers\Api\ExpensesController;
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
-// Route::middleware('auth:sanctum')->group(function () {
+Route::middleware('auth:sanctum')->group(function () {
     // User
     Route::get('/user', [AuthController::class, 'user']);
     Route::put('/user', [AuthController::class, 'update']);
@@ -94,4 +94,4 @@ Route::post('/login', [AuthController::class, 'login']);
     Route::get('/total-savings', [TotalController::class, 'getTotalSavings']);
     Route::get('/total-expenses', [TotalController::class, 'getTotalExpenses']);
     Route::get('/total-debts', [TotalController::class, 'getTotalDebts']);
-// });
+});

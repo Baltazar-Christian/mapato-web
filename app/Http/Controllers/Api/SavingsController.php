@@ -14,7 +14,7 @@ class SavingsController extends Controller
     {
         // Get savings records for the authenticated user
         $user = Auth::user();
-        $savings = $user->savings;
+        $savings = Savings::where('user_id',$user->id)->latest()->get();
 
         return response()->json($savings);
     }
