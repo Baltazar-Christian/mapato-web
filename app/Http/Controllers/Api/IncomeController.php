@@ -54,13 +54,13 @@ class IncomeController extends Controller
         return response()->json($income, 201);
     }
 
- 
+
     public function update(Request $request, Income $income)
     {
         // Check if the income record belongs to the authenticated user
-        if ($income->user_id !== Auth::id()) {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
+        // if ($income->user_id !== Auth::id()) {
+        //     return response()->json(['error' => 'Unauthorized'], 401);
+        // }
 
         // Validate the request data
         $request->validate([
