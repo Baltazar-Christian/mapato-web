@@ -15,7 +15,7 @@ class TotalController extends Controller
     public function getTotalIncome()
     {
         $userId = Auth::id();
-        $totalIncome = Income::where('user_id', $userId)->sum('amount');
+        $totalIncome = Income::where('user_id', $userId)->sum('amount')??0;
 
 
 
@@ -26,14 +26,14 @@ class TotalController extends Controller
     public function getTotalSavings()
     {
         $userId = Auth::id();
-        $totalSavings = Savings::where('user_id', $userId)->sum('amount');
+        $totalSavings = Savings::where('user_id', $userId)->sum('amount')??0;
         return response()->json(['totalSavings' => $totalSavings]);
     }
 
     public function getTotalExpenses()
     {
         $userId = Auth::id();
-        $totalExpenses = Expense::where('user_id', $userId)->sum('amount');
+        $totalExpenses = Expense::where('user_id', $userId)->sum('amount')??0;
         return response()->json(['totalExpenses' => $totalExpenses]);
     }
 
