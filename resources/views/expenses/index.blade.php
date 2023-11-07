@@ -50,9 +50,12 @@
                                             <td>{{ $expense->created_at }}</td>
                                             <td>{{ $expense->description }}</td>
                                             <td>{{ $expense->amount }}</td>
-                                          
+
 
                                             <td>
+                                                <button type="button" class="btn btn-sm bg-navy edit-expense-btn" data-toggle="modal" data-target="#expensesModal" data-expense-id="{{ $expense->id }}" data-expense-amount="{{ $expense->amount }}" data-expense-description="{{ $expense->description }}">
+                                                    View
+                                                </button>
                                                 <button type="button" class="btn btn-sm bg-navy edit-expense-btn" data-toggle="modal" data-target="#expensesModal" data-expense-id="{{ $expense->id }}" data-expense-amount="{{ $expense->amount }}" data-expense-description="{{ $expense->description }}">
                                                     Edit
                                                 </button>
