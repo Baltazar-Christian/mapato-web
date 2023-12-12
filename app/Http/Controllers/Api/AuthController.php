@@ -96,6 +96,19 @@ class AuthController extends Controller
       );
   }
 
+//   For All users
+  // get user details
+  public function users()
+  {
+    $users=User::get();
+      return response(
+          [
+              'users' => $users
+          ],200
+      );
+    //   return response()->json($users);
+
+  }
   // update user details
   public function update(Request $request)
   {
